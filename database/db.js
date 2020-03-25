@@ -49,7 +49,7 @@ const createRoomTable = ()=>{
 
 pool.on("remove", ()=>{
     console.log("client has been removed");
-    process.exit(0);
+    // process.exit(0);
 });
 
 
