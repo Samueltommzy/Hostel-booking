@@ -105,8 +105,8 @@ const getRoomById = async(req,res)=>{
     console.log(id)
     const queryText = `SELECT * FROM rooms WHERE id=${id}`;
     try {
-        const {row } = await pool.query(queryText);
-        if (row.length==0) {
+        const {rows} = await pool.query(queryText);
+        if (rows.length==0) {
             return res.status(404).send({
                 status:404,
                 message:"No rooms with the specified id"
@@ -115,7 +115,7 @@ const getRoomById = async(req,res)=>{
         return res.status(200).send({
             status:200,
             message: "Room loaded",
-            data:row
+            data:rows
         });
     }
     catch(error){
@@ -156,7 +156,11 @@ const getRoomsByType = async(req,res)=>{
         })
     }
 }
-
+/**
+ * Deletes a room 
+ * @param {object} req 
+ * @param {object} res 
+ */
 const deleteRoom = async(req,res)=>{
     const id = req.params.id;
     const queryText = `DELETE FROM rooms WHERE id=${id}`
