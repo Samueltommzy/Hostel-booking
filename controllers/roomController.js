@@ -2,9 +2,9 @@
 const {pool} = require("../database/db");
 /**
  * Create a room
- * @param {object} req 
- * @param {object} res 
- * @return {object} Room object
+ * @param {Object} req 
+ * @param {Object} res 
+ * @return {Promise} Room object
  */
 const createRoom = async(req,res)=>{
     const createQuery = `INSERT INTO 
@@ -34,6 +34,7 @@ const createRoom = async(req,res)=>{
             message: error
         })
     }
+    
 }
 /**
  * Returns all rooms in the database
@@ -166,13 +167,13 @@ const deleteRoom = async(req,res)=>{
     const queryText = `DELETE FROM rooms WHERE id=${id}`
     try {
         const {rows,rowCount} = await pool.query(queryText);
-        if (!rows[0]) {
-            res.status(404).send({
-                status:404,
-                message:"room not found"
-            });
-            return false;
-        }
+        // if (!rows[0]) {
+        //     res.status(404).send({
+        //         status:404,
+        //         message:"room not found"
+        //     });
+        //     return false;
+        // }
         return res.status(200).send({
             status:200,
             message:"Room deleted",
