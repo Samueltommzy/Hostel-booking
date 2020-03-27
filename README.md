@@ -27,24 +27,16 @@ NodeJs
 Postgres
 ```
 ### Installation
-```
-Clone this repository using `git clone https:github.com/Samueltommzy/Hostel-booking.git`
-```
-```
-Navigate to the repository root directory and run the comman `npm install`
-```
-```
-Ensure you have your postgres database running visit [Postgres Documentation](https://www.postgresql.org/docs/9.3/tutorial-install.html) for more on this
-```
-```
-Update the database variables in *config/config.js* file
-```
-```
-Run the command `node db createRoomTable` from the database folder directory.This command helps to create the room table in your postgres database
-```
+
+* Clone this repository using `git clone https:github.com/Samueltommzy/Hostel-booking.git`
+* Navigate to the repository root directory and run the command `npm install`
+* Ensure you have your postgres database running visit [Postgres Documentation](https://www.postgresql.org/docs/9.3/tutorial-install.html) for more on this
+* Update the database variables in *config/config.js* file
+* Run the command `node db createRoomTable` from the database folder directory.This command helps to create the room table in your postgres database
+
 ## Start the app
 
-* Start the application by runnin `npm start` command
+* Start the application by running `npm start` command
 
 ## Testing
 
