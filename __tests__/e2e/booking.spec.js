@@ -16,7 +16,7 @@ describe("Test all booking endpoints", function(){
      
     it("Should book a new room", function(done){
         request(app).post("/api/v1/room/book").send({
-            room_id:3,
+            room_id:1,
             no_of_guests:2,
             check_in_date:"26/03/2020",
             check_out_date:"28/03/2020",

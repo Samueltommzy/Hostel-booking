@@ -31,14 +31,14 @@ describe("Test all room endpoints", function(){
             return done(error);
         });
     })
-    it("Should get a room by id"),function(done){
-        request(app).get(`/api/v1/rooms/5`).then(function(res){
+    it("Should get a room by id",function(done){
+        request(app).get("/api/v1/rooms/1").then(function(res){
             expect(res.status).to.equal(200);
             done();
         }).catch(function(error){
             return done(error);
         })
-    }
+    })
     it("Should get all rooms",function(done){
         request(app).get("/api/v1/rooms").then(function(res){
             expect(res.status).to.equal(200);
@@ -49,7 +49,7 @@ describe("Test all room endpoints", function(){
         });
     });
     it("Should get room by type",function(done){
-        request(app).get("/api/v1/rooms/type/1").then(function(res){
+        request(app).get("/api/v1/rooms/type/5").then(function(res){
             expect(res.status).to.equal(200);
             expect(res.body.data).to.be.instanceOf(Array);
             done();
@@ -57,8 +57,8 @@ describe("Test all room endpoints", function(){
             return done(error);
         });
     });
-    it("Should get delete a room",function(done){
-        request(app).delete("/api/v1/rooms/17").then(function(res){
+    it("Should delete a room",function(done){
+        request(app).delete("/api/v1/rooms/26").then(function(res){
             expect(res.status).to.equal(200);
             done();
         }).catch(function(error){
