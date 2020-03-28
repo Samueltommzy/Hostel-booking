@@ -1,18 +1,30 @@
 const { Pool } = require("pg");
-const config = require("../config/config");
+let {db} = require("../config/config");
+const pgtools = require("pgtools")
 const dotenv = require("dotenv");
 dotenv.config();
 
+let conn = db.devDbCred?db.devDbCred:db.testDbCred;
+let dbName = db.devDbCred?"hosteldb":"testdb";
 
-const pool = new Pool({
-    user:config.user,
-    host:config.host,
-    database:config.database,
-    password:config.password,
-    port:config.port
+const createDb= async()=>{
+    const conf={
+        user:conn.user,
+        host:conn.host,
+        password:conn.password,
+        port:conn.port
+    }
+    const res =  await pgtools.createdb(conf,dbName);  
+}
+
+
+let pool = new Pool({
+    user:conn.user,
+    host:conn.host,
+    database:conn.database,
+    password:conn.password,
+    port:conn.port
 });
-// pool.connect();
-// global.db = pool;
 
 pool.on("connect", ()=>{
     console.log("Connected to database")
@@ -21,7 +33,8 @@ pool.on("connect", ()=>{
 /**
  * This function creates table in database
  */
-const createRoomTable = ()=>{
+const createRoomTable = async ()=>{
+   createDb().then(()=>{
     const queryText = `CREATE TABLE IF NOT EXISTS 
     rooms(
         id SERIAL NOT NULL PRIMARY KEY,
@@ -45,6 +58,9 @@ const createRoomTable = ()=>{
         console.log(err);
         pool.end();
     });
+   }).catch((err)=>{
+       console.log(error)
+   })
 }
 
 pool.on("remove", ()=>{
