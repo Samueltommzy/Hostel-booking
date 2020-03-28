@@ -31,16 +31,15 @@ Postgres
 * Clone this repository using `git clone https:github.com/Samueltommzy/Hostel-booking.git`
 * Navigate to the repository root directory and run the command `npm install`
 * Ensure you have your postgres database running visit [Postgres Documentation](https://www.postgresql.org/docs/9.3/tutorial-install.html) for more on this
-* Update the database variables in *config/config.js* file
-* Run the command `node db createRoomTable` from the database folder directory.This command helps to create the room table in your postgres database
+* Update the database variables(user and password) in *config/config.js* file with your postgres data
 
 ## Start the app
-
-* Start the application by running `npm start` command
+* Run the pre-start script using `npm run pre-start` command.This command helps set up the database and room table on your local machine
+* Start the application by running `npm run start` or `npm run start-dev` command
 
 ## Testing
-
-* Test the app using `npm test` command
+* Run the pre-test script using `npm run pre-test` command.This command helps set up a mock database and room table for test on your local machine
+* Test the app using `npm run test` command
 
 ## Documentation
 
@@ -50,5 +49,6 @@ For ease of understanding the endpoints in this api,i created a documentation av
 ## Todos
 
 * Enable socket connection for admin to view live bookings
+* Complete e2e testing for 400,401,404 cases
 * Write unit test for all controllers
 * Docker
