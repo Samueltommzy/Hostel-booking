@@ -22,8 +22,8 @@ const createRoom = async(req,res)=>{
 
     try{
         const {rows} = await pool.query(createQuery,values);
-        return res.status(201).send({
-            status:201,
+        return res.send({
+            status:200,
             message: "Room successfully created",
             data: rows
         });
@@ -52,7 +52,7 @@ const getAllRooms = async(req,res)=>{
         });
         return false;
     }
-       return res.status(200).send({
+       return res.send({
                 status:200,
                 message:"All rooms loaded successfully",
                 totalRowCount:rowCount,
@@ -103,7 +103,6 @@ const getAllAvailableRooms = async(req,res)=>{
  */
 const getRoomById = async(req,res)=>{
     const id = req.params.id;
-    console.log(id)
     const queryText = `SELECT * FROM rooms WHERE id=${id}`;
     try {
         const {rows} = await pool.query(queryText);
